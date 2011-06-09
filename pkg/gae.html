@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Twister: gae</title>
+<link rel="stylesheet" href="../static/base.css" type="text/css"/> 
+</head>
+<body>
+<div id="content"> 
+<h1><a href="..">Twister</a>: gae</h1>
+
+<h4>Table Of Contents</h4>
+<ul>
+<li><a href="#package">Package</a>
+<li><a href="#Context">func Context</a>
+<li><a href="#Handle">func Handle</a>
+</ul>
+
+<h2 id="package">Package</h2>
+
+<p><code>import "github.com/garyburd/twister/gae"</code></p>
+
+<p>
+The gae package provides support for running Twister applications on
+Google AppEngine.
+</p>
+
+
+
+
+<h2 id="Context">func <a href="http://github.com/garyburd/twister/blob/master/gae/gae.go#L94">Context</a></h2>
+<p><code>func Context(req *web.Request) appengine.Context</code></p>
+<p>
+Context returns the App Engine context for the given request.
+</p>
+
+<h2 id="Handle">func <a href="http://github.com/garyburd/twister/blob/master/gae/gae.go#L89">Handle</a></h2>
+<p><code>func Handle(pattern string, handler web.Handler)</code></p>
+<p>
+Handle registers handler for the given URL pattern. The documentation for
+http.ServeMux explains how patterns are matched. Twister applicatons will
+typically register a handler with the pattern &#34;/&#34;.
+</p>
+
+
+<hr>
+This page was generated automatically from the source code. If you installed
+Twister using <a href="http://golang.org/cmd/goinstall/">goinstall</a>, then
+you can also view the source documentation with <a
+href="http://golang.org/cmd/godoc/">godoc</a>.  
+</div>
+</body>
+</html>

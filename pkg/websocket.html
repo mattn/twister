@@ -32,13 +32,13 @@
 <h2 id="Conn">type Conn</h2>
 
 <pre>type Conn struct {
- // contains unexported fields
+ // contains filtered or unexported fields
 }</pre>
 
 
 
     <h3 id="Upgrade">func <a href="http://github.com/garyburd/twister/blob/master/websocket/websocket.go#L110">Upgrade</a></h3>
-    <p><code>func Upgrade(req *web.Request, readBufSize, writeBufSize int, header web.HeaderMap) (conn *Conn, err os.Error)</code></p>
+    <p><code>func Upgrade(req *web.Request, readBufSize, writeBufSize int, header web.Header) (conn *Conn, err os.Error)</code></p>
     <p>
 Upgrade upgrades the HTTP connection to the WebSocket protocol. The
 caller is responsible for closing the returned connection.
