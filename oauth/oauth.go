@@ -229,7 +229,7 @@ func (c *Client) SignParam(credentials *Credentials, method, url string, param w
 
 func (c *Client) request(credentials *Credentials, url string, param web.Values) (*Credentials, web.Values, os.Error) {
 	c.SignParam(credentials, "POST", url, param)
-	resp, err := http.PostForm(url, param.StringMap())
+	resp, err := http.PostForm(url, http.Values(param))
 	if err != nil {
 		return nil, nil, err
 	}
@@ -267,7 +267,7 @@ func (c *Client) RequestTemporaryCredentials(callbackURL string) (*Credentials, 
 }
 
 // RequestToken requests token credentials from the server. 
-func (c *Client) RequestToken(temporaryCredentials *Credentials, verifier string) (*Credentials, map[string]string, os.Error) {
+func (c *Client) RequestToken(temporaryCredentials *Credentials, verifier string) (*Credentials, http.Values, os.Error) {
 	m := make(web.Values)
 	if verifier != "" {
 		m.Set("oauth_verifier", verifier)
@@ -276,7 +276,7 @@ func (c *Client) RequestToken(temporaryCredentials *Credentials, verifier string
 	if err != nil {
 		return nil, nil, err
 	}
-	return credentials, m.StringMap(), nil
+	return credentials, http.Values(m), nil
 }
 
 // AuthorizationURL returns the full authorization URL.

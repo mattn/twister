@@ -21,7 +21,7 @@ import (
 )
 
 // Values maps names to slices of values.
-type Values map[string][]string
+type Values http.Values
 
 // NewValues returns a map initialized with the given key-value pairs.
 func NewValues(kvs ...string) Values {
@@ -52,16 +52,6 @@ func (m Values) Add(key string, value string) {
 // Set value for given key, discarding previous values if any.
 func (m Values) Set(key string, value string) {
 	m[key] = []string{value}
-}
-
-// StringMap returns a string to string map by discarding all but the first
-// value for a key. 
-func (m Values) StringMap() map[string]string {
-	result := make(map[string]string)
-	for key, values := range m {
-		result[key] = values[0]
-	}
-	return result
 }
 
 // FormEncodedBytes returns a buffer containing the URL form encoding of the
